@@ -1,27 +1,21 @@
-import colorama
-from colorama import Fore
-import time
+import os
 import random
 
 def main():
-    # رشته اعداد دودویی
-    binary_string = ""
-    
     # تعداد اعداد دودویی
-    num_digits = 100
+    num_digits = 100000
     
     # حلقه برای ایجاد اثر باران
     for _ in range(num_digits):
-        # اضافه کردن یک عدد دودویی تصادفی به رشته
-        binary_string = random.choice(['0', '1']) + binary_string
+        # ایجاد یک عدد دودویی تصادفی
+        binary_digit = random.choice(['0', '1'])
         
-        # چاپ رشته با رنگ سبز
-        print(Fore.GREEN + binary_string)
-        
-        # تاخیر برای ایجاد اثر باران
-        time.sleep(0.1)  # افزایش تاخیر
+        # چاپ عدد دودویی با رنگ سبز
+        print(f"\033[32m{binary_digit}", end='', flush=True)  # کد ANSI برای رنگ سبز
+
+    # پاک کردن خروجی ترمینال
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 if __name__ == "__main__":
     # اجرای اصلی
-    colorama.init(autoreset=True)  # فعال کردن رنگ‌های colorama
     main()
